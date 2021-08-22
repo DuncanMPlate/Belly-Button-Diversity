@@ -2,7 +2,7 @@ data = d3.json("data/samples.json").then(data=>console.log(data));
 
 let trace = {
 	x: data.samples,
-	y: names
+	y: data.names
 
 }
 let layout = {
