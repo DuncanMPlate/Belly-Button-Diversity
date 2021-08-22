@@ -1,8 +1,9 @@
 data = d3.json("data/samples.json").then(data=>console.log(data));
 
 let trace = {
-	x: data.samples,
-	y: data.names
+	y: data.samples,
+	x: data.names,
+	type: "bar"
 
 }
 let layout = {
