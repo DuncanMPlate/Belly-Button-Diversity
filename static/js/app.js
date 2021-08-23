@@ -10,8 +10,8 @@ d3.json("data/samples.json").then((data) => {
 });
 function fill_charts(data_names) {
 	d3.json('data/samples.json').then((data) => {
-	let demos = data.metadata.filter((element) => element["id"]==data_names);
-	let samples = data.samples.filter((element) => element["id"]==data_names);
+	//let demo_data = data.metadata.filter((demo) => demo["id"]==data_names);
+	let samples = data.samples.filter((sample) => sample["id"]==data_names);
 	let samples_quantities = samples[0].samples_quantities;
 	let otu_ids = samples[0].otu_ids;
 	let id = [];
@@ -36,7 +36,7 @@ function barChart(barCharts) {
 
 	}
 	let layout = {
-		title: "Bar Chart",
+		title: "Belly Button Data",
 		yaxis: {"trickangle": -45},
 		hovermode: 'closest'
 	};
@@ -45,7 +45,7 @@ function barChart(barCharts) {
 	}
 	Plotly.newPlot("bar", bar_trace, layout);
 };
-d3.selectAll("#selDataset").on("change", getData);
+d3.selectAll("#selDataset").on("change", optionChanged);
 
 
 function optionChanged() {
