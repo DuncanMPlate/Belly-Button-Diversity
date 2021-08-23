@@ -1,4 +1,4 @@
-d3.json("data/samples.json").then((data) => {
+d3.json("./data/samples.json").then((data) => {
 	var names_list = data.names;
 	let dropdownMenu = d3.select("#selDataset");
 	let names = dropdownMenu.property("value");
@@ -9,7 +9,7 @@ d3.json("data/samples.json").then((data) => {
 	fill_charts = data_names;
 });
 function fill_charts(data_names) {
-	d3.json('data/samples.json').then((data) => {
+	d3.json('./data/samples.json').then((data) => {
 	//let demo_data = data.metadata.filter((demo) => demo["id"]==data_names);
 	let samples_names = data.samples.filter((sample) => sample["id"]==data_names);
 	let samples_quantities = samples_names[0].samples_quantities;
