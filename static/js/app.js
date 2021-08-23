@@ -52,23 +52,6 @@ function getData() {
   let data_names = d3.select("#selDataset").node().value;
   // Assign the value of the dropdown menu option to a variable
   names_chart(data_names);
-  // Initialize an empty array for the country's data
-//  var data = [];
-
-  //if (dataset == 'us') {
-   //   data = us;
-  //}
-  //else if (dataset == 'uk') {
-    //  data = uk;
-  //}
-  //else if (dataset == 'canada') {
-    //  data = canada;
-  //}
-  // Call function to update the chart
-  //updatePlotly(data);
-//}
-
-// Update the restyled plot's values
-//function updatePlotly(newdata) {
-  //Plotly.restyle("pie", "values", [newdata]);
+  updatePlotly(barCharts);
+ 
 }
