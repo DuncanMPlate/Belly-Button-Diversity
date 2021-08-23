@@ -14,13 +14,13 @@ function fill_charts(data_names) {
 	let samples_names = data.samples.filter((sample) => sample["id"]==data_names);
 	let samples_quantities = samples_names[0].samples_quantities;
 	let otu_ids = samples_names[0].otu_ids;
-	let id = [];
+	let id_call = [];
 	for (i=0; i < otu_ids.length; i++) {
-		id.push(`OTU_ID:${otu_ids[i]}`);
+		id_call.push(`OTU_ID:${otu_ids[i]}`);
 	};
 	let otu_label = samples_names[0].otu_label.slice(0,10);
 	let barCharts = {
-		"id": id,
+		"id": id_call,
 		"quantities": samples_quantities,
 		"hovertext": otu_label
 	};
