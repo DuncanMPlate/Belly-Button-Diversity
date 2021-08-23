@@ -5,17 +5,17 @@ d3.json("./data/samples.json").then((data) => {
 	names_list.forEach(name => {dropdownMenu.append("option").text(name).property('value', name);
 		
 	});
-	let data_names = names_list[0];
-	fill_charts = data_names;
+	let chart_data = names_list[0];
+	fill_charts = chart_data;
 });
-function fill_charts(data_names) {
+function fill_charts(chart_data) {
 	d3.json('./data/samples.json').then((data) => {
-	let demo_data = data.metadata.filter((demo) => demo["id"]==data_names);
+	let demo_data = data.metadata.filter((demo) => demo["id"]==chart_data);
 	console.log(demo_data);
-	let samples_names = data.samples.filter((sample) => sample["id"]==data_names);
+	let samples_names = data.samples.filter((sample) => sample["id"]==chart_data);
 	console.log(samples_names);
 	let samples_quantities = samples_names[0].samples_quantities;
-	console.log(samples_quantities)
+	console.log(samples_quantities);
 	let otu_ids = samples_names[0].otu_ids;
 	let id_call = [];
 	for (i=0; i < otu_ids.length; i++) {
@@ -53,9 +53,9 @@ d3.selectAll("#selDataset").on("change", optionChanged);
 
 
 function optionChanged() {
-  let data_names = d3.select("#selDataset").node().value;
+  let chart_data = d3.select("#selDataset").node().value;
  
-  fill_charts(data_names);
+  fill_charts(chart_data);
   updatePlotly(barCharts);
  
 }
