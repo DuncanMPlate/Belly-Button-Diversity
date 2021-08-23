@@ -2,7 +2,7 @@ d3.json("data/samples.json").then((data) => {
 	var names_list = data.names;
 	let dropdownMenu = d3.select("#selDataset");
 	let names = dropdownMenu.property("value");
-	names_list.array.forEach(names => {dropdownMenu.append("option").text(names).property('value', names);
+	names_list.forEach(name => {dropdownMenu.append("option").text(name).property('value', name);
 		
 	});
 	let data_names = names_list[0];
