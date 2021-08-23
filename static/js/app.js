@@ -11,14 +11,14 @@ d3.json("data/samples.json").then((data) => {
 function fill_charts(data_names) {
 	d3.json('data/samples.json').then((data) => {
 	//let demo_data = data.metadata.filter((demo) => demo["id"]==data_names);
-	let samples = data.samples.filter((sample) => sample["id"]==data_names);
-	let samples_quantities = samples[0].samples_quantities;
-	let otu_ids = samples[0].otu_ids;
+	let samples_names = data.samples.filter((sample) => sample["id"]==data_names);
+	let samples_quantities = samples_names[0].samples_quantities;
+	let otu_ids = samples_names[0].otu_ids;
 	let id = [];
 	for (i=0; i < otu_ids.length; i++) {
 		id.push(`OTU_ID:${otu_ids[i]}`);
 	};
-	let otu_label = samples[0].otu_label.slice(0,10);
+	let otu_label = samples_names[0].otu_label.slice(0,10);
 	let barCharts = {
 		"id": id,
 		"quantities": samples_quantities,
