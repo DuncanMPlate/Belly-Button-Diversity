@@ -6,7 +6,7 @@ d3.json("./data/samples.json").then((data) => {
 		
 	});
 	let chart_data = names_list[0];
-	fill_charts = chart_data;
+	//fill_charts = chart_data;
 });
 function fill_charts(chart_data) {
 	d3.json('./data/samples.json').then((data) => {
@@ -21,19 +21,19 @@ function fill_charts(chart_data) {
 	for (i=0; i < otu_ids.length; i++) {
 		id_call.push(`OTU_ID:${otu_ids[i]}`);
 	};
-	let otu_label = samples_names[0].otu_label.slice(0,10);
-	console.log(otu_label)
-	let barCharts = {
+	let otu_labels = samples_names[0].otu_labels.slice(0,10);
+	console.log(otu_labels);
+	let allCharts = {
 		"id": id_call,
 		"quantities": samples_quantities,
-		"hovertext": otu_label
+		"hovertext": otu_labels
 	};
-	barChart(barCharts);
+	barChart(allCharts);
 })};
-function barChart(barCharts) {
+function barChart(allCharts) {
 	let bar_trace = {
-		x: barCharts.id.slice(0,10).reverse(),
-		y: barCharts.quantities.slice(0,10).reverse(),
+		x: allCharts.id.slice(0,10).reverse(),
+		y: allCharts.quantities.slice(0,10).reverse(),
 		orientation: "h",
 		text: barCharts.hovertext.slice(0,10).reverse(),
 		type: "bar"
@@ -49,6 +49,19 @@ function barChart(barCharts) {
 	}
 	Plotly.newPlot("bar", bar_trace, layout);
 };
+//function bubbleChart(allCharts) {
+	//let bubble_trace = {
+		//x: allCharts.id,
+		//y: allCharts.quantities,
+		//text: allCharts.hovertext,
+		//mode: 'markers',
+		//marker: {size: allCharts.quantities, color: allCharts.id}
+	//};
+	//let layout = {
+		//title: " IDs and Sample Values",
+
+//	}
+//};
 d3.selectAll("#selDataset").on("change", optionChanged);
 
 
@@ -56,6 +69,6 @@ function optionChanged() {
   let chart_data = d3.select("#selDataset").node().value;
  
   fill_charts(chart_data);
-  updatePlotly(barCharts);
+  //updatePlotly(barCharts);
  
 }
