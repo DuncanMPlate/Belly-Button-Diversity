@@ -6,9 +6,9 @@ d3.json("data/samples.json").then((data) => {
 		
 	});
 	let data_names = names_list[0];
-	names_chart = data_names;
+	fill_charts = data_names;
 });
-function names_chart(data_names) {
+function fill_charts(data_names) {
 	d3.json('data/samples.json').then((data) => {
 	let demos = data.metadata.filter((element) => element["id"]==data_names);
 	let samples = data.samples.filter((element) => element["id"]==data_names);
@@ -48,10 +48,10 @@ function barChart(barCharts) {
 d3.selectAll("#selDataset").on("change", getData);
 
 
-function getData() {
+function optionChanged() {
   let data_names = d3.select("#selDataset").node().value;
-  // Assign the value of the dropdown menu option to a variable
-  names_chart(data_names);
+ 
+  fill_charts(data_names);
   updatePlotly(barCharts);
  
 }
